@@ -32,7 +32,7 @@
 </template>
 <script>
 import GoogleMap from '@/components/GoogleMap.vue';
-import axios from 'axios';
+import http from "@/util/http-common";
 export default {
     data() {
         return {
@@ -45,8 +45,8 @@ export default {
     created() {
         var dong = this.$route.params.dong;
         if(dong != null) {
-            var url = `http://localhost:9999/houseInfo/${this.$route.params.dong}`;
-            axios.get(url).then(({ data }) => {
+            var url = `/houseInfo/${this.$route.params.dong}`;
+            http.get(url).then(({ data }) => {
                 for(var i=0; i<data.length; i++){
                     var obj = {
                         AptName : data[i].AptName,

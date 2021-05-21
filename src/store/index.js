@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import userHttp from '@/util/user-http-common'
+import userHttp from '@/util/http-common'
 // import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);

@@ -5,9 +5,9 @@ import Contents from "../page/Contents.vue";
 import Service from "../page/Service.vue";
 import Login from "../page/Login.vue";
 import Board from "../page/Board.vue";
-import BoardDetail from "../page/BoardDetail.vue";
-import BoardCreate from "../page/BoardCreate.vue";
-import BoardUpdate from "../page/BoardUpdate.vue";
+// import BoardDetail from "../page/BoardDetail.vue";
+// import BoardCreate from "../page/BoardCreate.vue";
+// import BoardUpdate from "../page/BoardUpdate.vue";
 import User from "../page/User.vue";
 
 Vue.use(VueRouter);
@@ -34,25 +34,47 @@ const routes = [
     component: Login,
   },
   {
-    path: "/board",
     name: "Board",
+    path: "/board",
     component: Board,
+    children: [
+      {
+        path: "create",
+        name: "board-create",
+        component: () => import("@/components/Board/BoardCreate.vue")
+      },
+      {
+        path: ":no",
+        name: "board-detail",
+        component: () => import("@/components/Board/BoardDetail.vue")
+      },
+      {
+        path: "update/:no",
+        name: "board-update",
+        component: () => import("@/components/Board/BoardUpdate.vue")
+      },
+    ]
   },
-  {
-    path: "/board/create",
-    name: "BoardCreate",
-    component: BoardCreate,
-  },
-  {
-    path: "/board/:no",
-    name: "BoardDetail",
-    component: BoardDetail,
-  },
-  {
-    path: "/board/update/:no",
-    name: "BoardUpdate",
-    component: BoardUpdate,
-  },
+  // {
+  //   path: "/board",
+  //   name: "Board",
+  //   component: Board,
+  // },
+  // {
+  //   path: "/board/create",
+  //   name: "BoardCreate",
+  //   component: BoardCreate,
+  // },
+  // {
+  //   path: "/board/:no",
+  //   name: "BoardDetail",
+  //   component: BoardDetail,
+  // },
+  // {
+  //   path: "/board/update/:no",
+  //   name: "BoardUpdate",
+  //   component: BoardUpdate,
+  // },
   {
     name: "User",
     path: "/user",
@@ -64,14 +86,14 @@ const routes = [
         component: () => import("@/components/User/UserCreate.vue")
       },
       {
-        path: "view",
-        name: "user-view",
-        component: () => import("@/components/User/UserView.vue")
+        path: "detail",
+        name: "user-detail",
+        component: () => import("@/components/User/UserDetail.vue")
       },
       {
         path: "modify/:id",
         name: "user-modify",
-        component: () => import("@/components/User/UserModify.vue")
+        component: () => import("@/components/User/UserUpdate.vue")
       },
       {
         path: "searchpass",

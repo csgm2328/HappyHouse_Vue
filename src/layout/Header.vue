@@ -1,7 +1,6 @@
 <template lang="">
-  <header id="header" class="fixed-top ">
+  <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-
       <h1 class="logo"><a href="/">HappyHouse.</a></h1>
 
       <nav id="navbar" class="navbar">
@@ -15,15 +14,12 @@
   </header>
 </template>
 <script>
-
 export default {
   data() {
     return {
-      isLogin : false,
-    }
+      isLogin: false,
+    };
   },
-}
+};
 </script>
-<style>
-
-</style>
+<style></style>
