@@ -972,6 +972,35 @@ section {
   margin-top: 10px;
 }
 
+.custom-portfolio-info {
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0px 15px 30px rgba(67, 65, 117, 0.08);
+}
+
+.custom-portfolio-info a{
+  text-decoration: none;
+  color:#434175;
+}
+
+.custom-portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.custom-portfolio-info ul li + li {
+  margin-top: 10px;
+}
+
 .portfolio-details .portfolio-description {
   padding-top: 30px;
 }
@@ -1576,6 +1605,40 @@ button.custom[type="button"] {
   text-align: left;
   border: 1px solid #b9b9fa;
 }
+.customSearch form{
+  margin-top: 30px;
+  background: #fff;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  text-align: left;
+  border: 1px solid #b9b9fa;
+}
+
+.custom-select-sm{
+  /* margin-top: 10px; */
+  margin: 10px 0 1px 2px;
+  background: #fff;
+  width: 100%;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  align-self: left;
+  border: 1px solid #b9b9fa;
+}
+
+.custom-select-sm[type="date"]{
+  /* margin-top: 10px; */
+  margin: 10px 0 1px 2px;
+  font-size: 14px;
+  background: #fff;
+  width: 45%;
+  padding: 3px 3px 3px 15px;
+  position: relative;
+  border-radius: 50px;
+  align-self: left;
+  border: 1px solid #b9b9fa;
+}
 
 #footer .footer-newsletter form input[type="email"] {
   border: 0;
@@ -1584,6 +1647,11 @@ button.custom[type="button"] {
 }
 
 .footer-newsletter form input[type="text"] {
+  border: 0;
+  padding: 4px 8px;
+  width: calc(100% - 100px);
+}
+.customSearch input[type="text"] {
   border: 0;
   padding: 4px 8px;
   width: calc(100% - 100px);
@@ -1625,6 +1693,25 @@ button.custom[type="button"] {
 }
 
 .footer-newsletter form input[type="submit"]:hover {
+  background: #7272f5;
+}
+.customSearch input[type="button"] {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: #5a5af3;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.customSearch input[type="button"]:hover {
   background: #7272f5;
 }
 

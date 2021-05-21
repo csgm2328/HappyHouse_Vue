@@ -23,7 +23,7 @@
                       </svg>
                       <i class="bx bxl-dribbble"></i>
                     </div>
-                    <h4><a href="">아파트<br>실 거래가 검색</a></h4>
+                    <h4><a href="/houseInfo">아파트<br>실 거래가 검색</a></h4>
                     <p>아파트 실 거래가 검색 기능을 제공합니다. 법정동을 기준으로 검색이 가능합니다.</p>
                   </div>
                 </div>

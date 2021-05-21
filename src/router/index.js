@@ -5,9 +5,6 @@ import Contents from "../page/Contents.vue";
 import Service from "../page/Service.vue";
 import Login from "../page/Login.vue";
 import Board from "../page/Board.vue";
-// import BoardDetail from "../page/BoardDetail.vue";
-// import BoardCreate from "../page/BoardCreate.vue";
-// import BoardUpdate from "../page/BoardUpdate.vue";
 import User from "../page/User.vue";
 
 Vue.use(VueRouter);
@@ -24,9 +21,16 @@ const routes = [
     component: Contents,
   },
   {
-    path: "/happyHouse/houseInfo/:dong",
+    path: "/houseInfo",
     name: "Service",
     component: Service,
+    children: [
+      // {
+      //   path: "update/:no",
+      //   name: "board-update",
+      //   component: () => import("@/components/Board/BoardUpdate.vue")
+      // },
+    ]
   },
   {
     path: "/login",
@@ -55,26 +59,6 @@ const routes = [
       },
     ]
   },
-  // {
-  //   path: "/board",
-  //   name: "Board",
-  //   component: Board,
-  // },
-  // {
-  //   path: "/board/create",
-  //   name: "BoardCreate",
-  //   component: BoardCreate,
-  // },
-  // {
-  //   path: "/board/:no",
-  //   name: "BoardDetail",
-  //   component: BoardDetail,
-  // },
-  // {
-  //   path: "/board/update/:no",
-  //   name: "BoardUpdate",
-  //   component: BoardUpdate,
-  // },
   {
     name: "User",
     path: "/user",
