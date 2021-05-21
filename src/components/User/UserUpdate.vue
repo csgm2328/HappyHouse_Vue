@@ -1,6 +1,6 @@
 <template>
   <div>
-    <write-form type="modify" />
+    <write-form type="update" />
   </div>
 </template>
 

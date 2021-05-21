@@ -13,7 +13,7 @@
       <label for="comment">하고 싶은 말</label>
       <div class="view" v-html="enterToBr(user.comment)"></div>
       <div style="padding-top: 15px">
-        <router-link :to="`/user/modify/${user.id}`" class="btn">수정</router-link>
+        <router-link :to="`/user/update/${user.id}`" class="btn">수정</router-link>
         <a href="#" class="btn" @click="deleteuser">탈퇴</a>
         <router-link to="/user" class="btn">목록</router-link>
       </div>

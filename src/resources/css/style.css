@@ -24,7 +24,12 @@ a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "cursive", sans-serif;
 }
 
@@ -71,7 +76,8 @@ h1, h2, h3, h4, h5, h6 {
   background: #fff;
 }
 
-#header.header-scrolled, #header.header-inner-pages {
+#header.header-scrolled,
+#header.header-inner-pages {
   padding: 12px 0;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
@@ -139,7 +145,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
 }
 
-.navbar a:hover, .navbar .active, .navbar li:hover > a {
+.navbar a:hover,
+.navbar .active,
+.navbar li:hover > a {
   color: #5a5af3;
 }
 
@@ -186,7 +194,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 
-.navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover > a {
   color: #5a5af3;
 }
 
@@ -280,7 +290,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #434175;
 }
 
-.navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
+.navbar-mobile a:hover,
+.navbar-mobile .active,
+.navbar-mobile li:hover > a {
   color: #5a5af3;
 }
 
@@ -312,7 +324,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 12px;
 }
 
-.navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
+.navbar-mobile .dropdown ul a:hover,
+.navbar-mobile .dropdown ul .active:hover,
+.navbar-mobile .dropdown ul li:hover > a {
   color: #5a5af3;
 }
 
@@ -367,7 +381,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #5a5af3;
 }
 
-#hero .btn-get-started, #hero .btn-get-quote {
+#hero .btn-get-started,
+#hero .btn-get-quote {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 15px;
@@ -443,7 +458,8 @@ h1, h2, h3, h4, h5, h6 {
   #hero .hero-img img {
     width: 80%;
   }
-  #hero .btn-get-started, #hero .btn-get-quote {
+  #hero .btn-get-started,
+  #hero .btn-get-quote {
     padding-left: 18px;
     padding-right: 18px;
     font-size: 14px;
@@ -477,7 +493,7 @@ section {
 }
 
 .section-title h2::after {
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   width: 50px;
@@ -571,7 +587,9 @@ section {
   box-shadow: 10px 15px 30px rgba(0, 0, 0, 0.18);
 }
 
-.why-us .box:hover span, .why-us .box:hover h4, .why-us .box:hover p {
+.why-us .box:hover span,
+.why-us .box:hover h4,
+.why-us .box:hover p {
   color: #fff;
 }
 
@@ -796,7 +814,8 @@ section {
   transition: all 0.3s ease-in-out;
 }
 
-.portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
+.portfolio #portfolio-flters li:hover,
+.portfolio #portfolio-flters li.filter-active {
   color: #5a5af3;
 }
 
@@ -978,9 +997,9 @@ section {
   box-shadow: 0px 15px 30px rgba(67, 65, 117, 0.08);
 }
 
-.custom-portfolio-info a{
+.custom-portfolio-info a {
   text-decoration: none;
-  color:#434175;
+  color: #434175;
 }
 
 .custom-portfolio-info h3 {
@@ -1360,16 +1379,16 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input, .contact .php-email-form textarea {
+.contact .php-email-form input,
+.contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   border-radius: 5px;
 }
 
-
-
-.contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
   border-color: #5a5af3;
 }
 
@@ -1380,8 +1399,8 @@ section {
 .contact .php-email-form textarea {
   padding: 12px 15px;
 }
-
-.contact .php-email-form button[type="submit"] {
+/* csj*/
+.contact .php-email-form button {
   background: #5a5af3;
   border: 0;
   padding: 10px 24px;
@@ -1394,7 +1413,7 @@ button.del[type="button"] {
   background: #f35a5a;
   border: 0;
   padding: 10px 24px;
-  margin:10px;
+  margin: 10px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
@@ -1404,7 +1423,7 @@ button.upd[type="button"] {
   background: #46775d;
   border: 0;
   padding: 10px 24px;
-  margin:10px;
+  margin: 10px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
@@ -1414,13 +1433,13 @@ button.custom[type="button"] {
   background: #5a5af3;
   border: 0;
   padding: 10px 24px;
-  margin:10px;
+  margin: 10px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type="submit"]:hover {
+.contact .php-email-form button:hover {
   background: #7272f5;
 }
 
@@ -1605,7 +1624,7 @@ button.custom[type="button"] {
   text-align: left;
   border: 1px solid #b9b9fa;
 }
-.customSearch form{
+.customSearch form {
   margin-top: 30px;
   background: #fff;
   padding: 6px 10px;
@@ -1615,7 +1634,7 @@ button.custom[type="button"] {
   border: 1px solid #b9b9fa;
 }
 
-.custom-select-sm{
+.custom-select-sm {
   /* margin-top: 10px; */
   margin: 10px 0 1px 2px;
   background: #fff;
@@ -1627,7 +1646,7 @@ button.custom[type="button"] {
   border: 1px solid #b9b9fa;
 }
 
-.custom-select-sm[type="date"]{
+.custom-select-sm[type="date"] {
   /* margin-top: 10px; */
   margin: 10px 0 1px 2px;
   font-size: 14px;
