@@ -19,6 +19,7 @@
                         placeholder="Your Id"
                         required
                         v-model="id"
+                        :readonly="type == 'view'"
                       />
                     </div>
                     <div align="left" class="form-group mt-3">
@@ -84,15 +85,27 @@
                       >
                         회원가입
                       </button>
-                      <button type="reset" class="btn-get-quote" style="background-color: white">
+                      <button
+                        type="reset"
+                        class="btn-get-quote"
+                        style="background-color: white"
+                        v-if="type == 'create'"
+                      >
                         다시쓰기
                       </button>
                       <button
                         class="btn-get-started scrollto"
-                        v-if="type == 'update'"
+                        v-if="type == 'view'"
                         @click="checkValue"
                       >
                         수정
+                      </button>
+                      <button
+                        class="btn-get-quote scrollto"
+                        v-if="type == 'view'"
+                        @click="deleteuser"
+                      >
+                        탈퇴하기
                       </button>
                     </div>
                     <br />
@@ -129,14 +142,22 @@ export default {
     };
   },
   created() {
-    if (this.type === "update") {
-      http.get(`/${this.$route.params.id}`).then(({ data }) => {
-        this.id = data.id;
-        this.pass = data.pass;
-        this.mail = data.mail;
-        this.phone = data.phone;
-        this.comment = data.comment;
-      });
+    if (this.type === "view") {
+      console.dir(this.$session.get("userInfo")); //안됨
+      http
+        .get(`/user/${this.$route.params.id}`)
+        .then(({ data }) => {
+          this.id = data.id;
+          this.pass = data.pass;
+          this.mail = data.mail;
+          this.phone = data.phone;
+          this.comment = data.comment;
+        })
+        .catch(({ error }) => {
+          console.log(error);
+          alert("내정보를 불러오는 중 에러가 발생했습니다.");
+          this.$router.push("/");
+        });
     }
   },
   methods: {
@@ -171,13 +192,18 @@ export default {
             msg = "등록이 완료되었습니다.";
           }
           alert(msg);
-          // window.location.href = "/";
-          this.$router.push({ path: "/" });
+          window.location.href = "/";
+          // this.$router.push({ path: "/" });
+        })
+        .catch(({ error }) => {
+          console.log(error);
+          alert("등록 처리 중 에러가 발생했습니다.");
+          this.$router.push("/");
         });
     },
     updateuser() {
       http
-        .put(`/${this.id}`, {
+        .put(`user/${this.id}`, {
           id: this.id,
           pass: this.pass,
           phone: this.phone,
@@ -191,7 +217,34 @@ export default {
           }
           alert(msg);
           window.location.href = "/";
+        })
+        .catch(({ error }) => {
+          console.log(error);
+          alert("수정 처리 중 에러가 발생했습니다.");
+          this.$router.push("/");
         });
+    },
+    deleteuser() {
+      if (confirm("정말로 탈퇴하시겠습니까?")) {
+        http
+          .delete(`user/${this.id}`)
+          .then(({ data }) => {
+            let msg = "탈퇴 처리시 문제가 발생했습니다.";
+            if (data === "SUCCESS") {
+              msg = "탈퇴가 완료되었습니다.";
+              this.$session.set("userInfo", null);
+              // this.$session.set("id", null);
+            }
+            alert(msg);
+            // this.$router.push("/");
+            window.location.href = "/";
+          })
+          .catch(({ error }) => {
+            console.log(error);
+            alert("탈퇴 처리 중 에러가 발생했습니다.");
+            // this.$router.push("/");
+          });
+      }
     },
   },
 };
