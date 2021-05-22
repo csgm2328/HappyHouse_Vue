@@ -31,7 +31,7 @@ const routes = [
         component: ()=> import("@/components/HouseDeal/HouseSearch.vue")
       },
       {
-        path: ":aptName",
+        path: ":no",
         name: "house-deal-detail",
         component: ()=> import("@/components/HouseDeal/HouseDetail.vue")
       },
@@ -80,14 +80,9 @@ const routes = [
         component: () => import("@/components/User/UserCreate.vue")
       },
       {
-        path: "detail",
-        name: "user-detail",
-        component: () => import("@/components/User/UserDetail.vue")
-      },
-      {
-        path: "update/:id",
-        name: "user-update",
-        component: () => import("@/components/User/UserUpdate.vue")
+        path: "view/:id",
+        name: "user-view",
+        component: () => import("@/components/User/UserView.vue")
       },
       {
         path: "searchpass",

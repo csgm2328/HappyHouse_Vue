@@ -103,16 +103,25 @@ export default {
           pass: this.pass,
         })
         .then(({ data }) => {
-          this.$session.set("userInfo", data);
-          this.$session.set("userId", this.id);
-          console.log(data);
-          // this.$router.push("/");
-          window.location.href = "/";
+          console.dir(data);
+          if (data == "") {
+            console.log("로그인 실패");
+            alert("아이디, 비밀번호를 확인해주세요");
+          } else {
+            // alert("데이터 옴");
+            console.log("로그인 성공");
+            this.$session.set("userInfo", data);
+            window.location.href = "/";
+            // this.$session.set("id", this.id);
+          }
+          // console.log(this.$session);
+          // this.$context.commit("setLogin");
         })
         .catch((error) => {
           console.dir(error);
-          alert("아이디, 비밀번호를 확인해주세요");
+          alert("로그인중 오류가 발생했습니다.");
         });
+      console.log(this.$session);
     },
   },
 };

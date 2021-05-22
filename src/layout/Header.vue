@@ -4,16 +4,17 @@
       <h1 class="logo"><a href="/">HappyHouse.</a></h1>
 
       <nav id="navbar" class="navbar">
-        <ul v-if="userId == null">
+        <ul v-if="userInfo == null">
           <li><a class="nav-link scrollto active" href="/user/create">회원가입</a></li>
           <li><a class="getstarted scrollto" href="/login">로그인</a></li>
         </ul>
         <ul v-else>
           <li>
-            <a class="nav-link scrollto active" href="`/user-update?userId=${userId}`"
-              >{{ userId }}님 환영합니다!</a
+            <router-link :to="`/user/view/${userInfo.id}`"
+              >{{ userInfo.id }}님 환영합니다!</router-link
             >
           </li>
+
           <li><a class="getstarted scrollto" @click="logout">로그아웃</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -26,19 +27,16 @@ export default {
   data() {
     return {
       isLogin: false,
-      userId: this.$session.get("userId"),
+      userInfo: this.$session.get("userInfo"),
     };
   },
-  // computed:{
-  //   userId : this.$session.get('userId')
-  // },
   methods: {
     moveRegister() {
       this.$router.push({ name: "user-create" });
     },
     logout() {
       this.$session.set("userInfo", null);
-      this.$session.set("userId", null);
+      // this.$session.set("id", null);
       window.location.href = "/";
     },
   },

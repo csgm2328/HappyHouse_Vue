@@ -1,6 +1,6 @@
 <template>
   <div>
-    <write-form type="update" />
+    <write-form type="view" />
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import WriteForm from "@/components/User/include/Form.vue";
 
 export default {
-  name: "userupdate",
+  name: "userview",
   components: {
     WriteForm,
   },

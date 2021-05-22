@@ -1,11 +1,17 @@
 <template>
-  <GmapMap :zoom="14" :center="center" style="height: 50vh">
+  <GmapMap :zoom="zoom" :center="center" style="height: 50vh">
     <GmapMarker v-for="(m, index) in markers" :key="index" :position="m.position"> </GmapMarker>
   </GmapMap>
 </template>
 <script>
 export default {
   props : {
+    zoom : {
+      type : Number,
+      default: ()=> {
+        	return 14;
+      }
+    },
     markers : {
       type:Array,
       default: ()=> [
