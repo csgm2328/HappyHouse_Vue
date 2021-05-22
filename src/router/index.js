@@ -26,9 +26,14 @@ const routes = [
     component: Service,
     children: [
       {
-        path: ":dong",
-        name: "board-update",
-        component: Service
+        path: "",
+        name: "house-deal-search",
+        component: ()=> import("@/components/HouseDeal/HouseSearch.vue")
+      },
+      {
+        path: ":aptName",
+        name: "house-deal-detail",
+        component: ()=> import("@/components/HouseDeal/HouseDetail.vue")
       },
     ]
   },

@@ -137,7 +137,7 @@
 
 </template>
 <script>
-import GoogleMap from '../components/GoogleMap.vue';
+import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
 export default {
     components : {
       GoogleMap,
