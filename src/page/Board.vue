@@ -16,15 +16,16 @@
 				</form>
 			</div>
 		</div>
+	<router-view/>
 	</div>
-    <board-table/>
+    <!-- <board-table/> -->
   </section>
 </template>
 <script>
-import BoardTable from '@/components/BoardTable.vue';
+// import BoardTable from '@/components/BoardTable.vue';
 export default {
     components : {
-        BoardTable,
+        // BoardTable,
     }
 }
 </script>

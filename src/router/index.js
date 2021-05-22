@@ -25,11 +25,11 @@ const routes = [
     name: "Service",
     component: Service,
     children: [
-      // {
-      //   path: "update/:no",
-      //   name: "board-update",
-      //   component: () => import("@/components/Board/BoardUpdate.vue")
-      // },
+      {
+        path: ":dong",
+        name: "board-update",
+        component: Service
+      },
     ]
   },
   {
@@ -42,6 +42,11 @@ const routes = [
     path: "/board",
     component: Board,
     children: [
+      {
+        path: "",
+        name: "board-main",
+        component: () => import("@/components/Board/BoardTable.vue")
+      },
       {
         path: "create",
         name: "board-create",

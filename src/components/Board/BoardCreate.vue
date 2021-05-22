@@ -1,5 +1,5 @@
 <template lang="">
-  <section id="pricing" class="pricing">
+  <div>
     <!-- ======= Breadcrumbs ======= -->
     <div class="portfolio-details" style="padding: 30px">
       <div class="row gy-8">
@@ -22,7 +22,7 @@
       <button type="button" class="custom" onclick="location.href='/board'">목록으로</button>
       <button type="button" class="upd" v-on:click="createBoard">생성하기</button>
     </div>
-  </section>
+  </div>
 </template>
 <script>
 import http from "@/util/http-common";

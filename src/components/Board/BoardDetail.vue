@@ -1,21 +1,5 @@
 <template lang="">
-  <section id="pricing" class="pricing">
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-3 footer-newsletter wrapper">
-          <div class="bottom">
-            <button class="btn-buy" onclick="location.href='/board/create'">글 작성하기</button>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 footer-newsletter"></div>
-        <div class="col-lg-4 col-md-6 footer-newsletter" align="center">
-          <form action="" method="post">
-            <input type="text" name="name" /><input type="submit" value="검색" />
-          </form>
-        </div>
-      </div>
-    </div>
+  <div>
     <div class="portfolio-details" style="padding: 30px">
       <div class="row gy-8">
         <div class="col-lg-12">
@@ -33,9 +17,9 @@
     <div align="center">
       <button type="button" class="del" v-on:click="deleteBoard">삭제하기</button>
       <button type="button" class="custom" onclick="location.href='/board'">목록</button>
-      <button type="button" class="upd" onclick="location.href='/board/update'">수정하기</button>
+      <button type="button" class="upd" v-on:click="updateBoard">수정하기</button>
     </div>
-  </section>
+  </div>
 </template>
 <script>
 import http from "@/util/http-common";
@@ -61,6 +45,9 @@ export default {
           alert("삭제에 실패했습니다.");
           location.href = "/board";
         });
+    },
+    updateBoard() {
+      location.href=`/board/update/${this.$route.params.no}`;
     },
   },
   created() {
