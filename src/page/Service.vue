@@ -4,7 +4,7 @@
 
         <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="/">홈</a>
+            <a href="/houseInfo">홈</a>
         </li>
         <li class="breadcrumb-item active">거래가 검색</li>
         </ol>

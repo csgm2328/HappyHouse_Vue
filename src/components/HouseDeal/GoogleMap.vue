@@ -1,6 +1,9 @@
 <template>
-  <GmapMap :zoom="zoom" :center="center" style="height: 50vh">
-    <GmapMarker v-for="(m, index) in markers" :key="index" :position="m.position"> </GmapMarker>
+  <GmapMap ref="mapRef" :zoom="zoom" :center="center" style="height: 50vh">
+      <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+      </gmap-info-window>
+    <GmapMarker v-for="(m, index) in markers" :key="index" :clickable="true" :position="m.position" @click="toggleInfoWindow(m,index)"> 
+    </GmapMarker>
   </GmapMap>
 </template>
 <script>
@@ -18,8 +21,9 @@ export default {
         {
           position:{
             lat: 37.5012743,
-            lng: 127.039585
-          }
+            lng: 127.039585,
+          },
+          infotext:'',
         }
       ]
     },
@@ -31,8 +35,47 @@ export default {
             lng: 127.039585,
         	}
       }
+    },
+    // infoWindowPos: null,
+    // infoWinOpen: false,
+    // currentMidx: null,
+
+    // infoOptions: {
+    //   content: '',
+    // },
+  },
+  data() {
+    return {
+      infoWindowPos: null,
+      infoWinOpen: false,
+      currentMidx: null,
+
+      infoOptions: {
+        content: '',
+        pixelOffset: {
+          width: 0,
+          height: -35
+        }
+      },
     }
   },
+  methods: {
+      toggleInfoWindow: function(marker, idx) {
+        this.infoWindowPos = marker.position;
+        this.infoOptions.content = marker.infoText;
+        this.$refs.mapRef.$mapPromise.then((map) => {
+          map.panTo(marker.position);
+          this.zoom = 16;
+        })
+        if (this.currentMidx == idx) {
+          this.infoWinOpen = !this.infoWinOpen;
+        }
+        else {
+          this.infoWinOpen = true;
+          this.currentMidx = idx;
+        }
+      }
+  }
 };
 </script>
 <style></style>

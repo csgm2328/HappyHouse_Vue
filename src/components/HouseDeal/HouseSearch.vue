@@ -86,6 +86,7 @@ export default {
                 else {
                     this.info = [];
                     this.sendMarkers = [];
+                    var aptList = [];
                     for(var i=0; i<data.length; i++){
                         var obj = {
                             no : data[i].no,
@@ -102,9 +103,18 @@ export default {
                                 lat: Number(data[i].lat),
                                 lng: Number(data[i].lng),
                             },
-                        };
+                            infoText:`
+                            <strong>${data[i].AptName}</strong><br>
+                            <a href="/houseInfo/apt/${data[i].dong}/${data[i].AptName}">자세히</a>
+                            `,
+                        }
+// <a href="/houseInfo/apt/${data[i].AptName}">자세히</a>
+                        // console.log(aptList.contains(data[i].AptName));
+                        if(aptList.indexOf(data[i].AptName) < 0) {
+                            this.sendMarkers.push(markerObj);
+                            aptList.push(data[i].AptName);
+                        }
                         this.info.push(obj);
-                        this.sendMarkers.push(markerObj);
                     }
                     this.sendCenter = {
                         lat : Number(data[0].lat),

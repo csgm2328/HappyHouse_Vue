@@ -35,6 +35,11 @@ const routes = [
         name: "house-deal-detail",
         component: ()=> import("@/components/HouseDeal/HouseDetail.vue")
       },
+      {
+        path: "apt/:dong/:AptName",
+        name: "house-apt-detail",
+        component: ()=> import("@/components/HouseDeal/HouseAptSearch.vue")
+      },
     ]
   },
   {
