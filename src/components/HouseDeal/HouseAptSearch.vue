@@ -19,7 +19,7 @@
         <template v-for="(item, idx) in info">
             <div class="col-lg-4 col-md-6 team" :key="idx">
                 <div class="custom-portfolio-info">
-                <h3><a :href="`/houseInfo/${item.no}`">{{item.AptName}} {{item.floor}}층</a></h3>
+                <h3><router-link :to="{name:'house-deal-detail', params:{no : item.no + '+' + item.dong + '+' + item.AptName}}">{{item.AptName}} {{item.floor}}층</router-link></h3>
                 <ul>
                     <li><strong>거래일시</strong>: {{item.dealYear}}-{{item.dealMonth}}-{{item.dealDay}}</li>
                     <li><strong>건축년도</strong>: {{item.buildYear}}</li>

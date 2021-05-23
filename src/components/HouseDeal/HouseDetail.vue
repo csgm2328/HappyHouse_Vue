@@ -33,7 +33,8 @@
         <div class="row">
             <div class="col-lg-0 col-md-0 team">
                 <div class="custom-portfolio-info">
-                <h3>거래 동향</h3>
+                <h3>이 아파트에서 거래된 내역</h3>
+                    <bar-chart :chart-data="datacollection"></bar-chart>
                 </div>
             </div>
         </div>
@@ -42,22 +43,32 @@
 </template>
 <script>
 import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
+// import LineChart from '@/components/HouseDeal/LineChart'
+import BarChart from '@/components/HouseDeal/BarChart'
 import http from "@/util/http-common";
 export default {
+    name: 'VueCharts',
     data() {
         return {
+            datacollection: null,
             info : {},
             sendMarkers : [],
             sendCenter : {
                 lat: 37.5012743,
                 lng: 127.039585,
-        	},
+            },
+            paramNo : '',
+            paramDong : '',
+            paramAptName : ''
         }
     },
     created() {
         var no = this.$route.params.no;
+        this.paramNo = no.split('+')[0];
+        this.paramDong = no.split('+')[1];
+        this.paramAptName = no.split('+')[2];
         http
-            .get(`/houseInfo/detail/${no}`)
+            .get(`/houseInfo/detail/${this.paramNo}`)
             .then(({data}) => {
                 this.info = data;
                 this.sendMarkers.push({
@@ -71,12 +82,61 @@ export default {
                     lat : data.lat,
                     lng : data.lng
                 };
-                console.log(data);
+                console.log('create',data);
+            })
+        http
+            .post(`/houseInfo/apt`,{
+                aptName : this.paramAptName,
+                dong : this.paramDong
+            })
+            .then(({data}) => {
+                console.log("mounted" , data);
+                var maxLength = 10;
+                maxLength = (maxLength < data.length) ? maxLength : data.length;
+                console.log(maxLength);
+                this.fillData();
+                for(var i=0; i<maxLength; i++){
+                    if(Number(data[i].dealMonth) < 10) data[i].dealMonth = '0'+data[i].dealMonth;
+                    if(Number(data[i].dealDay) < 10) data[i].dealDay = '0'+data[i].dealDay;
+                    this.datacollection.labels.push(data[i].dealYear + '.' + data[i].dealMonth + '.' + data[i].dealDay);
+                    // this.datacollection.datasets[0].data.push(Number(data[i].dealAmount));
+                    var chNum = data[i].dealAmount.split(',');
+                    var numbering = chNum[0] + chNum[1];
+                    this.datacollection.datasets[0].data.push(Number(numbering));
+                }
+                console.log(this.datacollection.labels);
+                console.log(this.datacollection.datasets[0].data);
             })
     },
+    beforeCreate() {
+        
+    },
     components : {
-        GoogleMap
-    }
+        GoogleMap, BarChart
+    },
+    mounted() {
+
+    },
+    methods: {
+      fillData () {
+        this.datacollection = {
+          labels: [],
+          datasets: [
+            {
+              label: '최근 거래 내역 (10건까지 제공됩니다)',
+              backgroundColor: 'rgba(90, 90, 243, 0.7)',
+              pointBackgroundColor: 'white',
+              borderWidth: 5,
+              pointBorderColor: '#249EBF',
+              data: []
+            }
+          ]
+        }
+      },
+      getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      }
+    },
 }
 </script>
 <style>
@@ -98,7 +158,7 @@ export default {
     font-size: 30px;
     color:#5a5af3;
 }
-button {
+.member-info button {
   background: #5a5af3;
   border: 0;
   width: 70%;
