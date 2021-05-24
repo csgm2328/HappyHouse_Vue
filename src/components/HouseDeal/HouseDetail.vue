@@ -3,11 +3,11 @@
     <div class="row">
         <!-- 아파트 정보 -->
         <div class="col-lg-8 col-md-6 team" align="center">
-        <div class="member">
-            <div class="member-img">
-                <google-map :center="sendCenter" :markers="sendMarkers" :zoom="16"/>
+            <div class="member">
+                <div class="member-img">
+                    <google-map :center="sendCenter" :markers="sendMarkers" :zoom="16"/>
+                </div>
             </div>
-        </div>
         </div>
         <!-- <div align="center" class="col-lg-9 col-md-6"><google-map/></div> -->
         <div class="col-lg-4 col-md-6 team">
@@ -34,7 +34,8 @@
             <div class="col-lg-0 col-md-0 team">
                 <div class="custom-portfolio-info">
                 <h3>이 아파트에서 거래된 내역</h3>
-                    <bar-chart :chart-data="datacollection"></bar-chart>
+                    <line-chart v-show="size!=1" :chart-data="datacollection"></line-chart>
+                    <bar-chart v-show="size==1" :chart-data="datacollection"></bar-chart>
                 </div>
             </div>
         </div>
@@ -43,11 +44,10 @@
 </template>
 <script>
 import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
-// import LineChart from '@/components/HouseDeal/LineChart'
+import LineChart from '@/components/HouseDeal/LineChart'
 import BarChart from '@/components/HouseDeal/BarChart'
 import http from "@/util/http-common";
 export default {
-    name: 'VueCharts',
     data() {
         return {
             datacollection: null,
@@ -59,7 +59,8 @@ export default {
             },
             paramNo : '',
             paramDong : '',
-            paramAptName : ''
+            paramAptName : '',
+            size : 0
         }
     },
     created() {
@@ -94,6 +95,7 @@ export default {
                 var maxLength = 10;
                 maxLength = (maxLength < data.length) ? maxLength : data.length;
                 console.log(maxLength);
+                this.size = maxLength;
                 this.fillData();
                 for(var i=0; i<maxLength; i++){
                     if(Number(data[i].dealMonth) < 10) data[i].dealMonth = '0'+data[i].dealMonth;
@@ -112,7 +114,7 @@ export default {
         
     },
     components : {
-        GoogleMap, BarChart
+        GoogleMap, LineChart, BarChart
     },
     mounted() {
 
@@ -123,13 +125,16 @@ export default {
           labels: [],
           datasets: [
             {
+              fill: false,
               label: '최근 거래 내역 (10건까지 제공됩니다)',
               backgroundColor: 'rgba(90, 90, 243, 0.7)',
               pointBackgroundColor: 'white',
+              pointBorderColor: 'rgba(90, 90, 243, 0.7)',
               borderWidth: 2,
-              pointBorderColor: '#249EBF',
+              borderColor: 'rgba(90, 90, 243, 0.7)',
               data: [],
-              barThickness: 25
+              barThickness: 25,
+              
             }
           ]
         }

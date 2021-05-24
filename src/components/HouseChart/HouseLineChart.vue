@@ -8,6 +8,10 @@
     data () {
       return {
         options: {
+            title: {
+                display: true,
+                text: '월별 평균 거래가 검색'
+            },
           scales: {
             yAxes: [{
               ticks: {

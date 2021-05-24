@@ -49,9 +49,8 @@
                       </svg>
                       <i class="bx bx-tachometer"></i>
                     </div>
-                    <h4><a href="">차트로 보는<br>거래 동향</a></h4>
-                    <p>관심지역으로 설정한 정보를 관리합니다. 로그인 시에 지원가능한 기능입니다.</p>
-                    <p><a href="https://www.chartjs.org/">charjs 사용. </a></p>
+                    <h4><a href="/houseChart">차트로 보는<br>거래 동향</a></h4>
+                    <p>아파트 거래가에 대한 정보를 차트로 제공합니다. 서울특별시의 아파트 평균거래가, 인기순위 등을 제공합니다.</p>
                   </div>
                 </div>
 

@@ -6,6 +6,7 @@ import Service from "../page/Service.vue";
 import Login from "../page/Login.vue";
 import Board from "../page/Board.vue";
 import User from "../page/User.vue";
+import HouseChart from "../page/HouseChart.vue";
 
 Vue.use(VueRouter);
 Vue.use(VueGoogleMaps,{
@@ -95,6 +96,11 @@ const routes = [
         component: () => import("@/components/User/UserSearchPass.vue")
       },
     ]
+  },
+  {
+    name: "HouseChart",
+    path: "/houseChart",
+    component: HouseChart,
   }
 ];
 
