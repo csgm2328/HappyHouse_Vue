@@ -14,7 +14,10 @@
         </div>
       </div>
     </div>
-    <div align="center">
+    <div v-if="userInfo == null || userInfo.id != writer" align="center">
+      <button type="button" class="custom" onclick="location.href='/board'">목록</button>
+    </div>
+    <div v-else align="center">
       <button type="button" class="del" v-on:click="deleteBoard">삭제하기</button>
       <button type="button" class="custom" onclick="location.href='/board'">목록</button>
       <button type="button" class="upd" v-on:click="updateBoard">수정하기</button>
@@ -26,6 +29,7 @@ import http from "@/util/http-common";
 export default {
   data() {
     return {
+      userInfo: this.$session.get("userInfo"),
       boardNum: "",
       writer: "",
       regTime: "",
@@ -47,7 +51,7 @@ export default {
         });
     },
     updateBoard() {
-      location.href=`/board/update/${this.$route.params.no}`;
+      location.href = `/board/update/${this.$route.params.no}`;
     },
   },
   created() {
