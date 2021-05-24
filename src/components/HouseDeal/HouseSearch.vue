@@ -127,6 +127,7 @@ export default {
         },
     },
     created() {
+        console.log(this.$session.get("userInfo"));
         http
             .get('/dong')
             .then(({data}) => {

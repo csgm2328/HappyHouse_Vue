@@ -126,16 +126,14 @@ export default {
               label: '최근 거래 내역 (10건까지 제공됩니다)',
               backgroundColor: 'rgba(90, 90, 243, 0.7)',
               pointBackgroundColor: 'white',
-              borderWidth: 5,
+              borderWidth: 2,
               pointBorderColor: '#249EBF',
-              data: []
+              data: [],
+              barThickness: 25
             }
           ]
         }
       },
-      getRandomInt () {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-      }
     },
 }
 </script>

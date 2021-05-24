@@ -111,23 +111,8 @@
         </div>
 
         <ul class="faq-list">
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">웹 크롤링<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-          </li>
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">웹 크롤링<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-          </li>
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">웹 크롤링<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-          </li>
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">웹 크롤링<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-          </li>
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">웹 크롤링<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-          </li>
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">웹 크롤링<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <li v-for="(item, index) in news.newsList" :key="index">
+            <div data-bs-toggle="collapse" class="collapsed question"><a :href="`${item.newsHref}`" style="text-decoration: none;">{{item.newsName}}</a><i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
           </li>
         </ul>
 
@@ -138,12 +123,23 @@
 </template>
 <script>
 import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
+import http from "@/util/http-common";
 export default {
-    components : {
-      GoogleMap,
+  data() {
+    return {
+      news : []
     }
+  },
+  components : {
+    GoogleMap,
+  },
+  created() {
+    http.get('/getNews').then(({data})=>{
+      this.news = data;
+      console.log(this.news);
+    })
+  },
 }
 </script>
 <style>
-    
 </style>
