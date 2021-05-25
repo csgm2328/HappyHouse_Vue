@@ -24,7 +24,7 @@
                         <li><strong>지번</strong>: {{info.jibun}}</li>
                         <li><strong>시공연도</strong>: {{info.buildYear}}</li>
                     </ul>
-                    <button class="custom">찜 하기 💕</button>
+                    <button class="custom" @click="pick">찜 하기 💕</button>
                 </div>
             </div>
         </div>
@@ -47,6 +47,7 @@ import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
 import LineChart from '@/components/HouseDeal/LineChart'
 import BarChart from '@/components/HouseDeal/BarChart'
 import http from "@/util/http-common";
+const apt = require('@/assets/apt.png');
 export default {
     data() {
         return {
@@ -77,7 +78,12 @@ export default {
                         lat : data.lat,
                         lng : data.lng
                     },
-                    infoText : `<strong>${data.aptName} ${data.floor}층</strong>`
+                    infoText : `<strong>${data.aptName} ${data.floor}층</strong>`,
+                    markerOption : {
+                        url: apt,
+                        size: {width: 30, height: 40, f: 'px', b: 'px',},
+                        scaledSize: {width: 30, height: 45, f: 'px', b: 'px',},
+                    }
                 });
                 this.sendCenter ={
                     lat : data.lat,
@@ -139,12 +145,33 @@ export default {
           ]
         }
       },
+      pick(){
+          if(this.$session.get("userInfo") == null) alert("로그인 시 지원되는 기능입니다.");
+          else {
+              http
+                .get('/addPick',{
+                    params : {
+                        id : this.$session.get("userInfo").id,
+                        no : this.$route.params.no.split("+")[0]
+                    }
+                })
+                .then(({data})=>{
+                    console.log(data);
+                    if(data == "SUCCESS"){
+                        alert("등록에 성공했습니다");
+                    }
+                })
+                .catch(()=>{
+                    alert("이미 등록되어있는 매물입니다.");
+                })
+          }
+      }
     },
 }
 </script>
 <style>
 .team .member{
-    height: 90%;
+    height: 100%;
 }
 .wrapper{position:relative;}
 .bottom{position:absolute; bottom:0; width:90%; padding:10px 6px;}

@@ -36,8 +36,8 @@
                       </svg>
                       <i class="bx bx-file"></i>
                     </div>
-                    <h4><a href="">주택관련<br>정보 제공</a></h4>
-                    <p>주택 관련 정보를 제공합니다. 주변 환경에 대한 정보를 검색할 수 있습니다.</p>
+                    <h4><a href="/HousePick">주택관련<br>정보 제공</a></h4>
+                    <p>내가 찜한 아파트 관련 정보를 제공합니다. 주변 환경에 대한 정보를 검색할 수 있습니다. 로그인시에 지원되는 기능입니다.</p>
                   </div>
                 </div>
 
@@ -82,18 +82,17 @@
         <div class="section-title">
           <h2>최근 거래된 아파트 매물</h2>
           <p>최근에는 이런 아파트가 거래되었어요 !</p>
-          <p>(배치 프로그램 -> 12시 정각에 가장 최근 거래된 목록 하나를 가져와 axios로 갱신)</p>
         </div>
 
         <div align="center">
           <div class="member">
             <div class="member-img">
-              <google-map/>
+              <google-map :center="sendCenter" :markers="sendMarkers" :zoom="16"/>
             </div>
             <div class="member-info">
-              <h4>풍림 스페이스본 (101~505)</h4>
-              <span>사직동</span>
-              <span>2021-05-20</span>
+              <h4>{{info.aptName}}</h4>
+              <span>{{info.dong}}</span>
+              <span>{{info.dealYear}}-{{info.dealMonth}}-{{info.dealDay}}</span>
             </div>
           </div>
         </div>
@@ -123,9 +122,13 @@
 <script>
 import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
 import http from "@/util/http-common";
+const apt = require('@/assets/apt.png');
 export default {
   data() {
     return {
+      info : {},
+      sendMarkers : [],
+      sendCenter : {},
       news : []
     }
   },
@@ -136,6 +139,25 @@ export default {
     http.get('/getNews').then(({data})=>{
       this.news = data;
       console.log(this.news);
+    })
+    http.get('/getLately').then(({data})=>{
+        this.info = data;
+        this.sendMarkers.push({
+            position: {
+                lat: Number(data.lat),
+                lng: Number(data.lng),
+            },
+            infoText: `<strong>${data.AptName}</strong><br>`,
+            markerOption : {
+                url: apt,
+                size: {width: 30, height: 40, f: 'px', b: 'px',},
+                scaledSize: {width: 30, height: 45, f: 'px', b: 'px',},
+            }
+        });
+        this.sendCenter = {
+            lat : Number(data.lat),
+            lng : Number(data.lng)
+        }
     })
   },
 }

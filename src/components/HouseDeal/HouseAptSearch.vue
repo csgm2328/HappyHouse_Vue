@@ -39,6 +39,7 @@
 <script>
 import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
 import http from "@/util/http-common";
+const apt = require('@/assets/apt.png');
 export default {
     data() {
         return {
@@ -62,7 +63,12 @@ export default {
                         lat: Number(data[0].lat),
                         lng: Number(data[0].lng),
                     },
-                    infoText: `<strong>${data[0].AptName}</strong><br>`
+                    infoText: `<strong>${data[0].AptName}</strong><br>`,
+                    markerOption : {
+                        url: apt,
+                        size: {width: 30, height: 40, f: 'px', b: 'px',},
+                        scaledSize: {width: 30, height: 45, f: 'px', b: 'px',},
+                    }
                 });
                 this.sendCenter = {
                     lat : Number(data[0].lat),

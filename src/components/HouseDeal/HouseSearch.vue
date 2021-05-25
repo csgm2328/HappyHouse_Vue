@@ -58,6 +58,7 @@
 <script>
 import GoogleMap from '@/components/HouseDeal/GoogleMap.vue';
 import http from "@/util/http-common";
+const apt = require('@/assets/apt.png');
 export default {
     data() {
         return {
@@ -118,6 +119,11 @@ export default {
                             <strong>${data[i].AptName}</strong><br>
                             <a href="/houseInfo/apt/${data[i].dong}/${data[i].AptName}">자세히</a>
                             `,
+                            markerOption : {
+                                url: apt,
+                                size: {width: 30, height: 40, f: 'px', b: 'px',},
+                                scaledSize: {width: 30, height: 45, f: 'px', b: 'px',},
+                            }
                         }
                         // console.log(Number(data[i].dealAmount.replace(/[^0-9]/g,'')));
                         var isInput = true;
@@ -183,7 +189,6 @@ export default {
             else {
                 if(this.selectDong == '') alert('검색할 동을 선택해주세요.');
                 else {
-                    console.log('search Btn ');
                     this.inputData();
                 }
             }

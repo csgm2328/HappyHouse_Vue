@@ -7,6 +7,7 @@ import Login from "../page/Login.vue";
 import Board from "../page/Board.vue";
 import User from "../page/User.vue";
 import HouseChart from "../page/HouseChart.vue";
+import HousePick from "../page/HousePick.vue";
 
 Vue.use(VueRouter);
 Vue.use(VueGoogleMaps,{
@@ -106,6 +107,11 @@ const routes = [
     name: "HouseChart",
     path: "/houseChart",
     component: HouseChart,
+  },
+  {
+    name: "HousePick",
+    path: "/housePick",
+    component: HousePick,
   }
 ];
 
