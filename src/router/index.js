@@ -59,6 +59,11 @@ const routes = [
         component: () => import("@/components/Board/BoardTable.vue")
       },
       {
+        path: "search/:title",
+        name: "board-search",
+        component: () => import("@/components/Board/BoardTable.vue")
+      },
+      {
         path: "create",
         name: "board-create",
         component: () => import("@/components/Board/BoardCreate.vue")

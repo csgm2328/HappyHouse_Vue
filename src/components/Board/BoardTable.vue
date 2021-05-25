@@ -25,9 +25,17 @@ export default {
     };
   },
   created() {
-    http.get("/board").then(({ data }) => {
-      this.list = data;
-    });
+    console.log(this.$route.params.title);
+    if(this.$route.params.title == null){
+      http.get("/board").then(({ data }) => {
+        this.list = data;
+      });
+    }
+    else {
+      http.get(`/board/searchBoard/${this.$route.params.title}`).then(({ data }) => {
+        this.list = data;
+      });
+    }
   },
 };
 </script>

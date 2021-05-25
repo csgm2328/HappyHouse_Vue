@@ -154,7 +154,7 @@ export default {
                 borderWidth: 1,
                 borderColor: 'rgb(90, 90, 243, 0.8)',
                 backgroundColor: 'rgba(90, 90, 243, 0.4)',
-                data: [10],
+                data: [],
                 barThickness: 25,
               }
              ]

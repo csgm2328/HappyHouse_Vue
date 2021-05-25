@@ -10,8 +10,8 @@
         </div>
         <div class="col-lg-4 col-md-4 footer-newsletter"></div>
         <div class="col-lg-4 col-md-6 footer-newsletter" align="center">
-          <form action="" method="post">
-            <input type="text" name="name" /><input type="submit" value="검색" />
+          <form action="" method="post" v-on:submit.prevent>
+            <input type="text" name="name" v-model="title"/><input type="submit" value="검색" @click="search"/>
           </form>
         </div>
       </div>
@@ -26,6 +26,11 @@ export default {
   components: {
     // BoardTable,
   },
+  data() {
+    return {
+      title : '',
+    }
+  },
   methods: {
     confirmLogin() {
       if (this.$session.get("userInfo") == null) {
@@ -34,6 +39,10 @@ export default {
       } else {
         location.href = "/board/create";
       }
+    },
+    search() {
+      // this.$router.push({name: 'board-search', params: {title: this.title}});
+      location.href=`/board/search/${this.title}`;
     },
   },
 };
