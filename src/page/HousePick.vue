@@ -183,21 +183,22 @@ export default {
                 })
         },
         deletePick(obj){
-            console.log(obj);
-            http
-                .delete('/deletePick',{
-                    params : {
-                        id : this.$session.get("userInfo").id,
-                        no : obj.no
-                    }
-                })
-                .then(({data})=>{
-                    console.log(data);
-                    if(data == 'SUCCESS'){
-                        alert("삭제에 성공했습니다.");
-                        location.href = "/HousePick"
-                    }
-                })
+            var check = confirm(`${obj.aptName} ${obj.floor}층을 찜 목록에서 삭제하겠습니까?`);
+            if(check){
+                http
+                    .delete('/deletePick',{
+                        params : {
+                            id : this.$session.get("userInfo").id,
+                            no : obj.no
+                        }
+                    })
+                    .then(({data})=>{
+                        if(data == 'SUCCESS'){
+                            alert("삭제에 성공했습니다.");
+                            location.href = "/HousePick"
+                        }
+                    })
+            }
         }
     },
 }
