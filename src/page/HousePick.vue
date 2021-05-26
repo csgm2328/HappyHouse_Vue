@@ -44,7 +44,8 @@
                                         <li><strong>거래금액</strong>: {{item.dealAmount}}</li>
                                     </ul>
                                         <div class="pricing">
-                                            <button class="btn-buy" @click="show(item)">주변 상권 보기</button>
+                                            <button class="btn-buy" @click="show(item)">주변 상권 보기</button><br>
+                                            <button class="del" @click="deletePick(item)" type="button">삭제</button>
                                         </div>
                                     </div>
                                 </div>
@@ -96,28 +97,30 @@ export default {
                     this.list = data;
                     var totalLat = 0;
                     var totalLng = 0;
-                    for(var i=0; i<this.size; i++){
-                        totalLat += Number(data[i].lat);
-                        totalLng += Number(data[i].lng);
-                        this.sendMarkers.push({
-                            position: {
-                                lat: Number(data[i].lat),
-                                lng: Number(data[i].lng),
-                            },
-                            infoText:`
-                            <strong>${data[i].aptName}</strong><br>
-                            <a href="/houseInfo/apt/${data[i].dong}/${data[i].aptName}">자세히</a>
-                            `,
-                            markerOption : {
-                                url: apt,
-                                size: {width: 30, height: 40, f: 'px', b: 'px',},
-                                scaledSize: {width: 30, height: 45, f: 'px', b: 'px',},
-                            }
-                        });
-                    }
-                    this.sendCenter = {
-                        lat : Number(totalLat/this.size),
-                        lng : Number(totalLng/this.size)
+                    if(this.size != 0){
+                        for(var i=0; i<this.size; i++){
+                            totalLat += Number(data[i].lat);
+                            totalLng += Number(data[i].lng);
+                            this.sendMarkers.push({
+                                position: {
+                                    lat: Number(data[i].lat),
+                                    lng: Number(data[i].lng),
+                                },
+                                infoText:`
+                                <strong>${data[i].aptName}</strong><br>
+                                <a href="/houseInfo/apt/${data[i].dong}/${data[i].aptName}">자세히</a>
+                                `,
+                                markerOption : {
+                                    url: apt,
+                                    size: {width: 30, height: 40, f: 'px', b: 'px',},
+                                    scaledSize: {width: 30, height: 45, f: 'px', b: 'px',},
+                                }
+                            });
+                        }
+                        this.sendCenter = {
+                            lat : Number(totalLat/this.size),
+                            lng : Number(totalLng/this.size)
+                        }
                     }
                 })
 
@@ -178,10 +181,26 @@ export default {
                     }
 
                 })
+        },
+        deletePick(obj){
+            console.log(obj);
+            http
+                .delete('/deletePick',{
+                    params : {
+                        id : this.$session.get("userInfo").id,
+                        no : obj.no
+                    }
+                })
+                .then(({data})=>{
+                    console.log(data);
+                    if(data == 'SUCCESS'){
+                        alert("삭제에 성공했습니다.");
+                        location.href = "/HousePick"
+                    }
+                })
         }
     },
 }
 </script>
 <style>
-    
 </style>
