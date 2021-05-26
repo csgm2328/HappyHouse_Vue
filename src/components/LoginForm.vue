@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-lg-6 mt-4 mt-lg-0">
-              <form role="form" class="php-email-form">
+              <form method="post" role="form" class="php-email-form" v-on:submit.prevent>
                 <br />
                 <div class="form-group mt-3">
                   <input

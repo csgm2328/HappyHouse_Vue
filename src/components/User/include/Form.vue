@@ -101,7 +101,8 @@
                         수정
                       </button>
                       <button
-                        class="btn-get-quote scrollto"
+                        type = "button"
+                        class="del"
                         v-if="type == 'view'"
                         @click="deleteuser"
                       >
@@ -250,4 +251,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

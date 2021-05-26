@@ -171,7 +171,7 @@ export default {
 </script>
 <style>
 .team .member{
-    height: 100%;
+    height: 95%;
 }
 .wrapper{position:relative;}
 .bottom{position:absolute; bottom:0; width:90%; padding:10px 6px;}
@@ -197,5 +197,8 @@ export default {
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
+}
+.team .member .member-info {
+    height: 100%;
 }
 </style>
