@@ -25,7 +25,7 @@
 
 
 
-> [아마트 매매정보 검색](https://github.com/SUHYEOK97/HappyHouse_Vue/wiki/--%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80)
+> [아마트 매매정보 검색](https://github.com/SUHYEOK97/HappyHouse_Vue/wiki/%EC%95%84%EB%A7%88%ED%8A%B8-%EB%A7%A4%EB%A7%A4%EC%A0%95%EB%B3%B4-%EA%B2%80%EC%83%89)
 
 
 
