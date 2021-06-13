@@ -7,6 +7,10 @@
 * Web Architecture를 이해하고 활용하여 Web Project를 설계하고 구현할 수 있다.
 * Spring&MyBatis Framework, Spring Boot, Vue.js를 이해하고 활용할 수 있다.
 
+## 🎯 조원 역할
+* [ 김수혁 ] 주택 정보 컨텐츠 개발
+* [ 추승지 ] 유저 정보 컨텐츠 개발
+
 ## 🎯 요구사항 설계
 👉 [유스케이스 자세히보기](https://github.com/SUHYEOK97/HappyHouse_Vue/wiki/Usecase-Diagram)
 
