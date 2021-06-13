@@ -17,7 +17,7 @@
 ## 🎯 ERD
 ![image](https://user-images.githubusercontent.com/56239516/121803053-a28a9680-cc7a-11eb-945b-5a0db593dbde.png)
 
-## API
+## 🎯 API
 👉 [API 자세히보기](https://github.com/csgm2328/HappyHouse_API)
 
 ## 🎯 상세기능
